@@ -39,6 +39,19 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                col = x // TILE_SIZE
+                row = y // TILE_SIZE
+                pos = (col, row)
+
+                if pos in positions:
+                    positions.remove(pos)
+                else:
+                    positions.add(pos)
+                    
+
+
         screen.fill(BLACK)
         draw_gird(positions)
         pygame.display.update()
@@ -48,4 +61,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
