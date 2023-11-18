@@ -16,6 +16,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 
 def draw_gird(positions):
+    for position in positions:
+        col, row = position
+        top_left = (col * TILE_SIZE, row * TILE_SIZE)
+        pygame.draw.rect(screen, WHITE, (*top_left, TILE_SIZE, TILE_SIZE))
+
     for row in range(GRID_HEIGHT):
         pygame.draw.line(screen, WHITE, (0, row * TILE_SIZE), (WIDTH, row * TILE_SIZE))
 
@@ -25,6 +30,7 @@ def draw_gird(positions):
 def main():
     running = True
     positions = set()
+    positions.add((10,10))
 
     while running:
         clock.tick(FPS)
